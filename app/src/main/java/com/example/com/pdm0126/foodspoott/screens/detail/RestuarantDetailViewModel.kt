@@ -15,7 +15,7 @@ class RestaurantDetailViewModel(
     private val _restaurant = MutableStateFlow<Restaurant?>(null)
     val restaurant: StateFlow<Restaurant?> = _restaurant.asStateFlow()
 
-    fun loadRestaurant(id: Int) {
+    suspend fun loadRestaurant(id: Int) {
         _restaurant.value = repository.getRestaurantById(id)
     }
 }

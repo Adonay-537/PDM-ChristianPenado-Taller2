@@ -1,6 +1,7 @@
 package com.example.com.pdm0126.foodspoott.screens.search
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.com.pdm0126.foodspoott.data.RestaurantRepository
 import com.example.com.pdm0126.foodspoott.data.RestaurantRepositoryImpl
 import com.example.com.pdm0126.foodspoott.model.Restaurant
@@ -8,6 +9,7 @@ import com.example.com.pdm0126.foodspoott.model.Restaurant
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val repository: RestaurantRepository = RestaurantRepositoryImpl()
@@ -21,6 +23,8 @@ class SearchViewModel(
 
     fun onQueryChange(newQuery: String) {
         _query.value = newQuery
-        _results.value = repository.searchRestaurants(newQuery)
+        viewModelScope.launch {
+            _results.value = repository.searchRestaurants(newQuery)
+        }
     }
 }

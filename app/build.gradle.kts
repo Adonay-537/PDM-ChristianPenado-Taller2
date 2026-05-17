@@ -2,15 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.android)
+
 }
 
 android {
     namespace = "com.example.com.pdm0126.foodspoott"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.com.pdm0126.foodspoott"
@@ -38,6 +36,9 @@ android {
     buildFeatures {
         compose = true
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 dependencies {
@@ -59,5 +60,9 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.kotlinx.serialization.core)
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
 }
