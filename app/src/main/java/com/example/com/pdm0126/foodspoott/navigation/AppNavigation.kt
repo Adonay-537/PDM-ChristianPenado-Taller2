@@ -19,7 +19,6 @@ import com.example.com.pdm0126.foodspoott.screens.search.SearchScreen
 import com.example.com.pdm0126.foodspoott.screens.search.SearchViewModel
 
 
-// 1. Agregar ": NavKey" a todas tus rutas
 @Serializable
 object RestaurantList : NavKey
 
